@@ -3,18 +3,23 @@
 # Set ANYQ_API_TOKEN to require `Authorization: Bearer <token>` on /v1.
 
 listen = "127.0.0.1:8080"
-default_provider = "cloud"
+default_provider = "gemini"
 default_harness = "pipeline"
 
-# Cloud API.
-[providers.cloud]
-kind = "anthropic"
-model = "claude-opus-5-5"
-api_key_env = "ANTHROPIC_API_KEY"
-effort = "high"
-# Re-runs a request the safety classifiers declined on a fallback model.
-# Turn off for models that reject the parameter (Haiku).
-fallbacks = true
+# Gemini API (Google AI Studio free tier).
+[providers.gemini]
+kind = "openai_compat"
+base_url = "https://generativelanguage.googleapis.com/v1beta/openai"
+model = "gemini-3.8-flash"
+api_key_env = "GEMINI_API_KEY"
+
+# Optional: Anthropic Claude API.
+# [providers.claude]
+# kind = "anthropic"
+# model = "claude-opus-5-5"
+# api_key_env = "ANTHROPIC_API_KEY"
+# effort = "high"
+# fallbacks = true
 
 # On-premise: any server with the OpenAI /chat/completions API
 # (Ollama, vLLM, llama.cpp, LM Studio). Uncomment and set default_provider = "local".

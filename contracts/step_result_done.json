@@ -1,0 +1,48 @@
+{
+  "type": "done",
+  "report": {
+    "summary": "ТЗ неполное: нет требований к безопасности.",
+    "requirements": [
+      {
+        "id": "R-01",
+        "source_id": "Ф-1",
+        "section": "Функциональные требования",
+        "quote": "Клиент входит по номеру телефона.",
+        "summary": "Вход по номеру телефона"
+      }
+    ],
+    "findings": [
+      {
+        "requirement_id": "R-01",
+        "severity": "critical",
+        "category": "completeness",
+        "section": "Безопасность",
+        "quote": null,
+        "problem": "Не описана аутентификация клиента.",
+        "suggestion": "Указать способ аутентификации и требования к сессии.",
+        "verified": true,
+        "critic_note": "В разделе «Безопасность» способа аутентификации нет."
+      }
+    ],
+    "open_questions": [],
+    "models": ["model-a"],
+    "dropped": [
+      {
+        "finding": {
+          "requirement_id": null,
+          "severity": "major",
+          "category": "completeness",
+          "section": "Безопасность",
+          "quote": null,
+          "problem": "Не описана аутентификация клиента.",
+          "suggestion": "Указать способ аутентификации.",
+          "verified": false,
+          "critic_note": null
+        },
+        "reason": "duplicate",
+        "kept_in": "R-01",
+        "note": "То же замечание описано для R-01."
+      }
+    ]
+  }
+}

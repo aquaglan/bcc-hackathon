@@ -1,0 +1,20 @@
+[package]
+name = "anyq-pipeline"
+version.workspace = true
+edition.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+anyq-core.workspace = true
+async-trait.workspace = true
+futures-util.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+toml.workspace = true
+uuid.workspace = true
+
+[dev-dependencies]
+tokio.workspace = true

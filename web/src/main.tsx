@@ -1,0 +1,20 @@
+import "@fontsource/onest/cyrillic-200.css";
+import "@fontsource/onest/cyrillic-400.css";
+import "@fontsource/onest/cyrillic-500.css";
+import "@fontsource/onest/cyrillic-600.css";
+import "@fontsource/onest/cyrillic-800.css";
+import "@fontsource/onest/latin-200.css";
+import "@fontsource/onest/latin-400.css";
+import "@fontsource/onest/latin-500.css";
+import "@fontsource/onest/latin-600.css";
+import "@fontsource/onest/latin-800.css";
+import "@fontsource/jetbrains-mono/cyrillic-400.css";
+import "@fontsource/jetbrains-mono/latin-400.css";
+import "@fontsource/caveat/cyrillic-500.css";
+import "@fontsource/caveat/latin-500.css";
+import { createRoot } from "react-dom/client";
+import { App } from "./App";
+import "./styles.css";
+
+const root = document.getElementById("root");
+if (root) createRoot(root).render(<App />);

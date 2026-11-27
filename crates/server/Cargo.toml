@@ -1,0 +1,29 @@
+[package]
+name = "anyq-server"
+version.workspace = true
+edition.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+anyq-core.workspace = true
+anyq-adapters.workspace = true
+anyq-pipeline.workspace = true
+axum.workspace = true
+chrono.workspace = true
+pdf-extract.workspace = true
+serde_json.workspace = true
+serde.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+toml.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+utoipa.workspace = true
+utoipa-axum.workspace = true
+uuid.workspace = true
+
+[dev-dependencies]
+async-trait.workspace = true
+tower = { version = "0.5", features = ["util"] }

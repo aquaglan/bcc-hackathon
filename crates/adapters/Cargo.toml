@@ -1,0 +1,14 @@
+[package]
+name = "anyq-adapters"
+version.workspace = true
+edition.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+anyq-core.workspace = true
+async-trait.workspace = true
+reqwest.workspace = true
+serde_json.workspace = true
+tokio.workspace = true

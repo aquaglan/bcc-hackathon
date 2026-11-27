@@ -1,0 +1,12 @@
+target/
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.env
+anyq.toml
+
+# Development-tool files stay out of the repository.
+.agents/
+skills-lock.json
+AGENTS.md

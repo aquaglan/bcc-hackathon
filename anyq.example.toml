@@ -1,0 +1,39 @@
+# Copy to anyq.toml (git-ignored) and run: anyq-server anyq.toml
+# Secrets are read from the environment variables named here, never from this file.
+# Set ANYQ_API_TOKEN to require `Authorization: Bearer <token>` on /v1.
+
+listen = "127.0.0.1:8080"
+default_provider = "cloud"
+default_harness = "pipeline"
+
+# Cloud API.
+[providers.cloud]
+kind = "anthropic"
+model = "claude-opus-5-5"
+api_key_env = "ANTHROPIC_API_KEY"
+effort = "high"
+# Re-runs a request the safety classifiers declined on a fallback model.
+# Turn off for models that reject the parameter (Haiku).
+fallbacks = true
+
+# On-premise: any server with the OpenAI /chat/completions API
+# (Ollama, vLLM, llama.cpp, LM Studio). Uncomment and set default_provider = "local".
+# [providers.local]
+# kind = "openai_compat"
+# base_url = "http://127.0.0.1:11434/v1"
+# model = "qwen3:14b"
+
+# An external harness: any service answering POST with a step result.
+# The Python one: make harness.
+[harnesses.baseline]
+kind = "http"
+url = "http://127.0.0.1:8090/v1/harnesses/baseline/step"
+
+# The built-in review in fixed stages; `anyq-server review` uses it.
+[harnesses.pipeline]
+kind = "pipeline"
+
+# The same pipeline with one round of questions first; `anyq-server review --interactive`.
+[harnesses.dialog]
+kind = "pipeline"
+ask_first = true

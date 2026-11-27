@@ -23,6 +23,6 @@ CONTRACTS = Path(__file__).parents[2] / "contracts"
     ],
 )
 def test_fixture_survives_a_round_trip(file, wire_type):
-    fixture = json.loads((CONTRACTS / file).read_text())
+    fixture = json.loads((CONTRACTS / file).read_text(encoding="utf-8"))
     adapter = TypeAdapter(wire_type)
     assert adapter.dump_python(adapter.validate_python(fixture), mode="json") == fixture

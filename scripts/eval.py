@@ -55,7 +55,7 @@ def assign(wanted: list[dict], asked: list[tuple[set[int], str]]) -> dict[int, i
 
 
 def evaluate(case: Path, review: dict) -> dict:
-    expected = tomllib.loads((case / "expected.toml").read_text())
+    expected = tomllib.loads((case / "expected.toml").read_text(encoding="utf-8"))
     defects, wanted = expected["defect"], expected.get("question", [])
     report = review["report"]
     sections = {r["id"]: r["section"] for r in report["requirements"]}
@@ -109,7 +109,7 @@ def evaluate(case: Path, review: dict) -> dict:
 
 
 def main() -> None:
-    case, review = Path(sys.argv[1]), json.loads(Path(sys.argv[2]).read_text())
+    case, review = Path(sys.argv[1]), json.loads(Path(sys.argv[2]).read_text(encoding="utf-8"))
     print(json.dumps(evaluate(case, review), ensure_ascii=False, indent=2))
 
 

@@ -244,7 +244,7 @@ def cli(config: str, env: dict[str, str]) -> None:
     command = [str(ROOT / "target/debug/anyq-server"), "review"]
     with tempfile.TemporaryDirectory() as tmp:
         spec, out = Path(tmp) / "spec.md", Path(tmp) / "out" / "report.md"
-        spec.write_text(SPEC)
+        spec.write_text(SPEC, encoding="utf-8")
         for flags, answer in (([], ""), (["--interactive"], "3 секунды\n")):
             subprocess.run(
                 [*command, str(spec), str(out), "--config", config, *flags],
@@ -254,7 +254,7 @@ def cli(config: str, env: dict[str, str]) -> None:
                 check=True,
                 timeout=120,
             )
-            report = out.read_text()
+            report = out.read_text(encoding="utf-8")
             assert "## 1. Паспорт прогона" in report and "fake-model" in report, report
             assert "| R-01 | Ф-1 | Скорость |" in report, report
             assert "**Нельзя.**" in report, report

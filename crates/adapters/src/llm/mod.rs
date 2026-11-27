@@ -88,8 +88,8 @@ mod tests {
     use super::*;
 
     #[tokio::test]
-    async fn transport_error_names_its_cause() {
-        // Nothing listens on port 1: the cause chain must say the connection was refused.
+    async fn transport_error_reports_the_target() {
+        // Nothing listens on port 1; keep the assertion independent of the OS message locale.
         let client = http_client().unwrap();
         let error = post_json(client.post("http://127.0.0.1:1/"))
             .await
@@ -97,6 +97,6 @@ mod tests {
         let LlmError::Transport(text) = error else {
             panic!("{error:?}")
         };
-        assert!(text.to_lowercase().contains("refused"), "{text}");
+        assert!(text.contains("127.0.0.1:1"), "{text}");
     }
 }
